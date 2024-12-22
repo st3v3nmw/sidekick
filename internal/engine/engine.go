@@ -129,6 +129,23 @@ You MUST respond with ONLY JSON in the following format:
 	}
 }
 
+func executeCommand(command *llms.Command) (result string) {
+	cmd := exec.Command("sh", "-c", command.Command)
+	out, err := cmd.Output()
+	r := strings.TrimSpace(string(out))
+
+	if err != nil {
+		result = fmt.Sprintf("\n%s", err.Error())
+	}
+
+	if len(r) > 0 {
+		result = fmt.Sprintf("\n%s", r)
+	}
+
+	fmt.Println(result)
+	return fmt.Sprintf("Result from last command: %s", result)
+}
+
 func getCommandColor(riskLevel int) color.Attribute {
 	if riskLevel >= 9 {
 		return color.FgRed
@@ -139,16 +156,4 @@ func getCommandColor(riskLevel int) color.Attribute {
 	} else {
 		return color.FgGreen
 	}
-}
-
-func executeCommand(command *llms.Command) string {
-	cmd := exec.Command("sh", "-c", command.Command)
-	out, _ := cmd.Output()
-	result := strings.TrimSpace(string(out))
-
-	if len(result) > 0 {
-		fmt.Printf("\n%s\n", result)
-	}
-
-	return fmt.Sprintf("Result:\n%s", result)
 }
