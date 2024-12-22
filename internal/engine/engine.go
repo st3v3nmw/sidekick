@@ -39,8 +39,8 @@ Your role is to:
 
 Execution Guidelines:
 - Break complex tasks into smaller sub-tasks and proceed iteratively
-- Use sub-step commands to gather more information about the environment when necessary
-- Respond with only one command at a time
+- Use sub-steps to gather more information about the environment when necessary
+- Respond with only one non-interactive command at a time
 - Use a reasonable number of commands to complete the task
 
 Risk Assessment Scale:
@@ -66,7 +66,7 @@ Working Directory:
 You MUST respond with ONLY JSON in the following format:
 {
 	"command": "<actual command>",
-	"why": "<why run this command & its risk assessment - very very brief>",
+	"why": "<Why this command? (x - risk assessment) - very very brief>",
 	"risk": <0-10>,
 	"done": <bool> // is this the last command?
 }
@@ -142,7 +142,10 @@ func executeCommand(command *llms.Command) (result string) {
 		result = fmt.Sprintf("\n%s", r)
 	}
 
-	fmt.Println(result)
+	if len(result) > 0 {
+		fmt.Println(result)
+	}
+
 	return fmt.Sprintf("Result from last command: %s", result)
 }
 
