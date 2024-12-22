@@ -75,10 +75,10 @@ var (
 )
 
 type ProjectInfo struct {
-	Path        string
-	Type        string
-	BuildSystem string
-	Deployment  string
+	Path         string
+	Types        []string
+	BuildSystems []string
+	Deployments  []string
 }
 
 func getProjectInfo() (*ProjectInfo, error) {
@@ -92,12 +92,7 @@ func getProjectInfo() (*ProjectInfo, error) {
 		return nil, fmt.Errorf("cannot read current directory: %w", err)
 	}
 
-	info := &ProjectInfo{
-		Path:        dir,
-		Type:        "N/A",
-		BuildSystem: "N/A",
-		Deployment:  "N/A",
-	}
+	info := &ProjectInfo{Path: dir}
 	for _, entry := range entries {
 		if entry.IsDir() {
 			continue
@@ -105,15 +100,16 @@ func getProjectInfo() (*ProjectInfo, error) {
 
 		name := entry.Name()
 		if projectType, ok := projectTypes[name]; ok {
-			info.Type = projectType
+			info.Types = append(info.Types, projectType)
+
 		}
 
 		if buildSystem, ok := buildSystems[name]; ok {
-			info.BuildSystem = buildSystem
+			info.BuildSystems = append(info.BuildSystems, buildSystem)
 		}
 
 		if deployment, ok := deploymentSystems[name]; ok {
-			info.Deployment = deployment
+			info.Deployments = append(info.Deployments, deployment)
 		}
 	}
 

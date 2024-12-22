@@ -85,9 +85,9 @@ You MUST respond with ONLY JSON in the following format:
 		info.Kernel.Release,
 		info.Product.Name,
 		project.Path,
-		project.Type,
-		project.BuildSystem,
-		project.Deployment,
+		strings.Join(project.Types, ", "),
+		strings.Join(project.BuildSystems, ", "),
+		strings.Join(project.Deployments, ", "),
 	)
 
 	steps := 1
