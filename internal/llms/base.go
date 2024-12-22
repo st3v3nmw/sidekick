@@ -6,11 +6,10 @@ type Message struct {
 }
 
 type Command struct {
-	Command    string `json:"command"`
-	Reasoning  string `json:"reasoning"`
-	Risk       int    `json:"risk"`
-	Assessment string `json:"assessment"`
-	Done       bool   `json:"done"`
+	Command string `json:"command"`
+	Why     string `json:"why"`
+	Risk    int    `json:"risk"`
+	Done    bool   `json:"done"`
 }
 
 type Provider interface {

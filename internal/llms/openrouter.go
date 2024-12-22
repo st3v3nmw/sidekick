@@ -81,7 +81,5 @@ func (o *OpenRouter) Complete(request string) (*Command, error) {
 		return nil, fmt.Errorf("cannot decode command %s: %w", content, err)
 	}
 
-	fmt.Printf("%#v\n", cmd)
-
 	return &cmd, nil
 }
