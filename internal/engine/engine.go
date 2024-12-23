@@ -36,17 +36,15 @@ Your role is to:
 
 Execution Guidelines:
 - Break complex tasks into smaller sub-tasks and proceed iteratively
-- Use sub-steps to gather more information about the environment when necessary
-- Respond with only one non-interactive command at a time
-- Use a reasonable number of commands to complete the task
+- Use sub-steps to gather more information about the environment
+- Respond with only one command at a time
+- Always confirm that the task is completed successfully
 
 Risk Assessment Scale:
 - 1-2: Safe, no system impact
 - 3-5: Moderate caution
 - 6-8: High risk, require user confirmation
 - 9-10: Extremely dangerous, block execution
-
-User Request: %s
 
 Environment:
 - OS: %s
@@ -60,12 +58,14 @@ Working Directory:
 - Build System: %s
 - Deployment: %s
 
+User Request: %s
+
 You MUST respond with ONLY JSON in the following format:
 {
 	"command": "<actual command>",
 	"why": "<Why this command? (x - risk assessment) - very very brief>",
 	"risk": <0-10>,
-	"done": <bool> // is this the last command?
+	"done": <bool> // is the task complete?
 }`
 
 	info := sysinfo.SysInfo{}
