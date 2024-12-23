@@ -27,9 +27,6 @@ func NewEngine(provider, model, apiKey string) (*Engine, error) {
 }
 
 func (e *Engine) Loop(request string) {
-	info := sysinfo.SysInfo{}
-	info.GetSysInfo()
-
 	prompt := `You are an intelligent command execution assistant called Sidekick.
 Your role is to:
 - Understand the user's request in natural language
@@ -69,8 +66,10 @@ You MUST respond with ONLY JSON in the following format:
 	"why": "<Why this command? (x - risk assessment) - very very brief>",
 	"risk": <0-10>,
 	"done": <bool> // is this the last command?
-}
-`
+}`
+
+	info := sysinfo.SysInfo{}
+	info.GetSysInfo()
 
 	project, err := getProjectInfo()
 	if err != nil {
