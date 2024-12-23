@@ -3,6 +3,7 @@ package engine
 import (
 	"fmt"
 	"os"
+	"slices"
 )
 
 var (
@@ -100,16 +101,21 @@ func getProjectInfo() (*ProjectInfo, error) {
 
 		name := entry.Name()
 		if projectType, ok := projectTypes[name]; ok {
-			info.Types = append(info.Types, projectType)
-
+			if !slices.Contains(info.Types, projectType) {
+				info.Types = append(info.Types, projectType)
+			}
 		}
 
 		if buildSystem, ok := buildSystems[name]; ok {
-			info.BuildSystems = append(info.BuildSystems, buildSystem)
+			if !slices.Contains(info.BuildSystems, buildSystem) {
+				info.BuildSystems = append(info.BuildSystems, buildSystem)
+			}
 		}
 
 		if deployment, ok := deploymentSystems[name]; ok {
-			info.Deployments = append(info.Deployments, deployment)
+			if !slices.Contains(info.Deployments, deployment) {
+				info.Deployments = append(info.Deployments, deployment)
+			}
 		}
 	}
 
