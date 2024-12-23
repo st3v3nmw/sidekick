@@ -30,14 +30,14 @@ func (e *Engine) Loop(request string) {
 	prompt := `You are an intelligent command execution assistant called Sidekick.
 Your role is to:
 - Understand the user's request in natural language
-- Determine appropriate system command(s)
+- Determine appropriate non-interactive command(s)
 - Assess command risk
 - Explain reasoning transparently
 
 Execution Guidelines:
 - Break complex tasks into smaller sub-tasks and proceed iteratively
 - Use sub-steps to gather more information about the environment
-- Respond with only one command at a time
+- Use a reasonable number of steps
 - Always confirm that the task is completed successfully
 
 Risk Assessment Scale:
@@ -78,7 +78,6 @@ You MUST respond with ONLY JSON in the following format:
 
 	instruction := fmt.Sprintf(
 		prompt,
-		request,
 		info.OS.Name,
 		info.OS.Architecture,
 		info.Kernel.Release,
@@ -87,6 +86,7 @@ You MUST respond with ONLY JSON in the following format:
 		strings.Join(project.Types, ", "),
 		strings.Join(project.BuildSystems, ", "),
 		strings.Join(project.Deployments, ", "),
+		request,
 	)
 
 	steps := 1
