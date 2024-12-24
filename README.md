@@ -75,6 +75,17 @@ print("Average:", avg(numbers))' > avg.py
 Fix division by zero by checking empty list (3 - modifies file)
 ```
 
+Risky commands require confirmation before running. The risk scale runs from 1 - 10:
+
+```console
+$ sk upgrade distro
+Step #1
+Command: sudo do-release-upgrade -d -f DistUpgradeViewNonInteractive
+Non-interactive distro upgrade (7 - system-wide impact, reboot needed)
+Execute? [y/N]: N
+Operation cancelled.
+```
+
 ## Installation
 
 ### Homebrew
