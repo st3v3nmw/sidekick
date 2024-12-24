@@ -37,7 +37,7 @@ Your role is to:
 Execution Guidelines:
 - Break complex tasks into smaller sub-tasks and proceed iteratively
 - Use sub-steps to gather more information about the environment
-- Use a reasonable number of steps
+- Always prefer non-interactive commands over interactive ones e.g. use apt autoremove -y instead of apt autoremove
 - Always confirm that the task is completed successfully
 
 Risk Assessment Scale:
