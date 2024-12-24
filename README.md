@@ -1,6 +1,6 @@
 # Sidekick
 
-A CLI tool that understands your natural language commands and executes them for you.
+A terminal assistant that understands your natural language commands and executes them for you.
 
 It's simple, just ask your sidekick to do something 😊:
 
