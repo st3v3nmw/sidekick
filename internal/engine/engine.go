@@ -96,7 +96,8 @@ You MUST respond with ONLY JSON in the following format:
 			log.Fatal(err)
 		}
 
-		fmt.Printf("Step #%d\n", steps)
+		bold := color.New(color.Bold)
+		bold.Printf("Step #%d\n", steps)
 		fmt.Printf("Command: ")
 
 		c := color.New(getCommandColor(command.Risk))

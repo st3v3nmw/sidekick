@@ -39,16 +39,62 @@ Push commits to remote (3 - network operation)
 A special command `sk --fix` exists that checks `tmux`'s pane output for errors and attempts to fix them.
 
 ```console
+$ python avg.py
+Traceback (most recent call last):
+  File "/home/stephen/Projects/sidekick/avg.py", line 7, in <module>
+    print("Average:", avg(numbers))
+                      ~~~^^^^^^^^^
+  File "/home/stephen/Projects/sidekick/avg.py", line 3, in avg
+    average = total / len(numbers)
+              ~~~~~~^~~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+
 $ sk --fix
+Step #1
+Command: cat avg.py
+Need to see code content first to fix division by zero (1 - read only)
+
+def avg(numbers):
+    total = sum(numbers)
+    average = total / len(numbers)
+    return average
+
+numbers = []
+print("Average:", avg(numbers))
+
+Step #2
+Command: echo 'def avg(numbers):
+    if not numbers:
+        return 0
+    total = sum(numbers)
+    average = total / len(numbers)
+    return average
+
+numbers = []
+print("Average:", avg(numbers))' > avg.py
+Fix division by zero by checking empty list (3 - modifies file)
 ```
 
 ## Installation
+
+### Homebrew
+
+Install `sidekick`:
+
+```console
+$ brew tap st3v3nmw/tap
+$ brew install st3v3nmw/tap/sidekick
+```
+
+### Go
 
 Install `sidekick`:
 
 ```console
 $ go install github.com/st3v3nmw/sidekick/cmd/sidekick
 ```
+
+## Setup
 
 Add an alias to your shell profile (`.bashrc`, `.zshrc`, etc.):
 
@@ -66,7 +112,15 @@ export SK_API_KEY="your-api-key"
 
 Currently, only [OpenRouter](https://openrouter.ai/) is supported.
 
-### Upgrading
+## Upgrading
+
+### Homebrew
+
+```console
+$ brew upgrade sidekick
+```
+
+### Go
 
 Remove the old version:
 
