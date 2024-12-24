@@ -38,7 +38,7 @@ Execution Guidelines:
 - Break complex tasks into smaller sub-tasks and proceed iteratively
 - Use sub-steps to gather more information about the environment
 - Always prefer non-interactive commands over interactive ones e.g. use apt autoremove -y instead of apt autoremove
-- Always confirm that the task is completed successfully
+- Confirm that the task is completed successfully where necessary
 
 Risk Assessment Scale:
 - 1-2: Safe, no system impact
@@ -63,7 +63,7 @@ User Request: %s
 You MUST respond with ONLY JSON in the following format:
 {
 	"command": "<actual command>",
-	"why": "<Why this command? (risk assessment) - very very brief>",
+	"why": "<Why this command? (x - risk assessment) - very very brief>",
 	"risk": <0-10>,
 	"done": <bool> // is the task complete?
 }`

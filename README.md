@@ -8,7 +8,7 @@ It's simple, just ask your sidekick to do something 😊:
 $ sk push to gh
 Step #1
 Command: git status
-Check repo status first (read-only)
+Check repo status first (1 - read-only)
 
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -22,18 +22,18 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 Step #2
 Command: git add README.md
-Stage modified README.md file (local change only)
+Stage modified README.md file (2 - local change only)
 
 Step #3
 Command: git commit -m "Update README.md"
-Commit staged changes (local change only)
+Commit staged changes (2 - local change only)
 
 [main b4fa01c] Update README.md
  1 file changed, 43 insertions(+), 1 deletion(-)
 
 Step #4
 Command: git push
-Push commits to remote (network operation)
+Push commits to remote (3 - network operation)
 ```
 
 A special command `sk --fix` exists that checks `tmux`'s pane output for errors and attempts to fix them.
