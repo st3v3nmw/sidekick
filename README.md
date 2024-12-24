@@ -36,7 +36,7 @@ Command: git push
 Push commits to remote (3 - network operation)
 ```
 
-A special command `sk --fix` exists that checks `tmux`'s pane output for errors and attempts to fix them.
+A special flag `--fix` exists that checks `tmux`'s pane output for errors and attempts to fix them.
 
 ```console
 $ python avg.py
@@ -90,16 +90,12 @@ Operation cancelled.
 
 ### Homebrew
 
-Install `sidekick`:
-
 ```console
 $ brew tap st3v3nmw/tap
 $ brew install st3v3nmw/tap/sidekick
 ```
 
 ### Go
-
-Install `sidekick`:
 
 ```console
 $ go install github.com/st3v3nmw/sidekick/cmd/sidekick

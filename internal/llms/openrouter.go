@@ -57,6 +57,7 @@ func (o *OpenRouter) Complete(request string) (*Command, error) {
 	req.Header.Set("Authorization", "Bearer "+o.apiKey)
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("X-Title", "Sidekick")
+	req.Header.Set("HTTP-Referer", "https://github.com/st3v3nmw/sidekick")
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
