@@ -63,7 +63,7 @@ User Request: %s
 You MUST respond with ONLY JSON in the following format:
 {
 	"command": "<actual command>",
-	"why": "<Why this command? (x - risk assessment) - very very brief>",
+	"why": "<Why this command? (risk assessment) - very very brief>",
 	"risk": <0-10>,
 	"done": <bool> // is the task complete?
 }`
